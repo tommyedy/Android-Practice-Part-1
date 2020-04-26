@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TesSuitmediaSatu</string>
+    <string name="typeNameHere">Type name here..</string>
+    <string name="typeTextPalindrome">Type text palindrome..</string>
+</resources>
