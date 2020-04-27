@@ -73,7 +73,6 @@
                 android:orientation="vertical">
                 <Button
                     android:layout_gravity="center"
-                    android:text="Choose Event"
                     android:padding="12dp"
                     android:background="@drawable/shape_button"
                     android:layout_width="match_parent"

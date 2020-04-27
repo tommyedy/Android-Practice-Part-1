@@ -16,7 +16,7 @@ public class FragmentScreenDua extends Fragment {
     //Variable
     private TextView tv_Name;
     private Button btn_ChooseEvent, btn_ChooseGuest;
-    private static String name;
+    private static String name, event_name;
 
     @Nullable
     @Override
@@ -25,13 +25,15 @@ public class FragmentScreenDua extends Fragment {
 
         //Get Extras From Previous Fragment
         name = getActivity().getIntent().getExtras().getString("name");
+        //Get Extras From Next Fragment
+        event_name = getActivity().getIntent().getExtras().getString("event_name","CHOOSE EVENT");
 
         //Get ID from Activity
         btn_ChooseEvent = view.findViewById(R.id.tv_ChooseEvent_id);
         btn_ChooseGuest = view.findViewById(R.id.tv_ChooseGuest_id);
         tv_Name         = view.findViewById(R.id.name_id);
 
-//        btn_ChooseEvent.setText();
+        btn_ChooseEvent.setText(event_name);
 //        btn_ChooseGuest.setText();
 
         //Set Name from Extas

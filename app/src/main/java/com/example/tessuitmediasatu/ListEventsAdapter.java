@@ -1,6 +1,7 @@
 package com.example.tessuitmediasatu;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.ArrayList;
 
 public class ListEventsAdapter extends RecyclerView.Adapter<ListEventsAdapter.listevent> {
 
   private ArrayList<Event> listEvent;
+  private Context context;
 
     public ListEventsAdapter(ArrayList<Event> listevent){
         listEvent = listevent;
@@ -30,7 +36,7 @@ public class ListEventsAdapter extends RecyclerView.Adapter<ListEventsAdapter.li
     }
 
     @Override
-    public void onBindViewHolder(@NonNull listevent holder, int position) {
+    public void onBindViewHolder(@NonNull final listevent holder, final int position) {
         Event list_event = listEvent.get(position);
         holder.imageView.setImageResource(list_event.getImage());
         holder.headingSatu.setText(list_event.getHeadingSatu());
@@ -40,7 +46,16 @@ public class ListEventsAdapter extends RecyclerView.Adapter<ListEventsAdapter.li
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("event_name",listEvent.get(position).getHeadingSatu());
+                FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+                FragmentTransaction NewFragment = fragmentManager.beginTransaction();
 
+                FragmentScreenDua fragmentScreenDua = new FragmentScreenDua();
+                fragmentScreenDua.setArguments(bundle);
+
+                NewFragment.replace(R.id.main_frame, fragmentScreenDua);
+                NewFragment.commit();
             }
         });
     }

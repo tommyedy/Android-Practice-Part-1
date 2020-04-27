@@ -21,37 +21,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Et_typeNameHere       = findViewById(R.id.typeNameHere_id);
-        Et_typeTextPalindrome = findViewById(R.id.typeTextPalindrome_id);
-        btn_Next               = findViewById(R.id.btnNext_id);
-        btn_Check              = findViewById(R.id.btnCheck_id);
-
-        typeTextPalindrome    = Et_typeTextPalindrome.getText().toString().trim();
+        Et_typeNameHere = findViewById(R.id.typeNameHere_id);
+        btn_Next = findViewById(R.id.btnNext_id);
 
         btn_Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (setValidation()){
-                    typeNameHere          = Et_typeNameHere.getText().toString().trim();
-                    Intent NextIntent      = new Intent(MainActivity.this, Screendua.class);
-                    NextIntent.putExtra("name" , typeNameHere);
+                if (setValidation()) {
+                    typeNameHere = Et_typeNameHere.getText().toString().trim();
+                    Intent NextIntent = new Intent(MainActivity.this, Screendua.class);
+                    NextIntent.putExtra("name", typeNameHere);
                     startActivity(NextIntent);
                 }
-
             }
         });
-
-
-    }
-
-    private boolean checkPalindrome(){
-        String textPalindrome = Et_typeTextPalindrome.getText().toString().trim();
-        String textTemp       = new StringBuilder(textPalindrome).reverse().toString().trim();
-        if (textTemp.equals(textPalindrome)){
-            return true;
-        }else{
-            return false;
-        }
     }
 
     private boolean setValidation() {
@@ -62,15 +45,7 @@ public class MainActivity extends AppCompatActivity {
             isTypeNameHere = true;
         }
 
-        if (Et_typeTextPalindrome.getText().toString().isEmpty()) {
-            Et_typeTextPalindrome.setError("Please Fill Text Here");
-            isTypeTextPalindrome = false;
-        } else {
-            isTypeTextPalindrome = true;
-        }
-
-
-        if (isTypeNameHere&&isTypeTextPalindrome){
+        if (isTypeNameHere){
             return true;
         }else{
             return false;

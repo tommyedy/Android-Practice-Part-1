@@ -17,7 +17,8 @@ import java.util.ArrayList;
 
 public class FragmentScreenTiga extends Fragment {
     private ImageView iv_back;
-    private ListEventsAdapter listeventadapter;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView recyclerView;
     private ArrayList<Event> arraylistevent;
 
@@ -38,19 +39,19 @@ public class FragmentScreenTiga extends Fragment {
             }
         });
 
-        recyclerView = view.findViewById(R.id.listEvent_id);
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         arraylistevent = new ArrayList<>();
-        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.ic_launcher_background));
-        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.ic_launcher_background));
-        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.ic_launcher_background));
-        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.ic_launcher_background));
-        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.ic_launcher_background));
+        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.family));
+        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.asian));
+        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.family));
+        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.asian));
+        arraylistevent.add(new Event("Lorem Ipsum","Lorem Ipsum","April 03, 2020","Lorem Ipsum Lorem Ipsum Lorem Ipsum ...",R.drawable.family));
 
-        listeventadapter = new ListEventsAdapter(arraylistevent);
+        recyclerView = view.findViewById(R.id.listEvent_id);
+        recyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mAdapter = new ListEventsAdapter(arraylistevent);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(mAdapter);
 
         return view;
     }
